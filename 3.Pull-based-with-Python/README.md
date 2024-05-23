@@ -48,5 +48,7 @@ echo GMS_TOKEN=$GMS_TOKEN
 ## Amazon Redshift
 
 Python 코드를 통해서 AWS에 프로비저닝 된 Redshift의 메타데이터 정보를 가져옵니다. 관련된 Sample Python 코드는 링크를 통해 확인 가능합니다.
-먼저 Data의 원본인 Redshift에 어떤 테이블이 저장되어 있는지 확인합니다.
+먼저 Data의 원본인 Redshift에 어떤 테이블이 저장되어 있는지 확인합니다. 총 8개의 테이블이 public 스키마 안에 저장되어 있습니다.
 <img src="/1.pic/Pic10.png"></img>
+
+아래의 코드를 활용해서 8개의 테이블 중 아래의 코드를 통해 'orders'와 'supplier' 테이블만 수집합니다.
