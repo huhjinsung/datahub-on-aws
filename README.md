@@ -10,7 +10,7 @@
 DataHub는 메타데이터 관리, 검색, 거버넌스를 간소화하도록 설계된 최신 데이터 카탈로그입니다. 데이터 관리, 검색 거버넌스 작업을 간소화하며 데이터를 효율적으로 탐색 및 이해하고,데이터 계보를 추적하고, 데이터 세트를 프로파일링하고 데이터 Contract를 수행 할 수 있습니다.
 
 ### Datahub 아키텍처 및 구성 요소
-<img src="/pic/pic1.png"></img>
+<img src="/pic/Pic1.png"></img>
 Datahub는 데이터를 메타데이터를 저장하고 관리하기 위한 **1. Persistence Tier** 메타데이터의 저장 및 검색을 위해 어플리케이션 기능을하는 **2. Application Tier** 메타데이터를 수집하는 **3. Client Tier로 구분됩니다.**
 
 **Persistence Tier**  
