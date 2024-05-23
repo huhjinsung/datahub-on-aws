@@ -10,7 +10,7 @@
 DataHub는 메타데이터 관리, 검색, 거버넌스를 간소화하도록 설계된 최신 데이터 카탈로그입니다. 데이터 관리, 검색 거버넌스 작업을 간소화하며 데이터를 효율적으로 탐색 및 이해하고,데이터 계보를 추적하고, 데이터 세트를 프로파일링하고 데이터 Contract를 수행 할 수 있습니다.
 
 ### Datahub 아키텍처 및 구성 요소
-<img src="/pic/Pic1.png" width="70%" height="70%"></img>
+<img src="/1.pic/Pic1.png" width="70%" height="70%"></img>
 
 Datahub는 데이터를 메타데이터를 저장하고 관리하기 위한 **1. Persistence Tier** 메타데이터의 저장 및 검색을 위해 어플리케이션 기능을하는 **2. Application Tier** 메타데이터를 수집하는 **3. Client Tier로 구분됩니다.**
 
@@ -43,4 +43,14 @@ Datahub는 데이터를 메타데이터를 저장하고 관리하기 위한 **1.
 - Push based integration : 메타데이터가 변경될 때 데이터 시스템에서 직접 메타데이터를 내보낼 수 있습니다. Push 기반 통합의 예로는 Airflow, Spark, Great Expectations 및 Protobuf 스키마가 있습니다.
 - Pull based integration : 데이터 시스템에 연결하여 일괄 또는 증분 배치 방식으로 메타데이터를 추출하여 데이터 시스템에서 메타데이터를 '크롤링' 또는 '수집'할 수 있습니다. Pull 기반 통합의 예로는 BigQuery, Snowflake, Looker, Tableau 및 기타 여러 가지가 있습니다.
 
-## Datahub 설치하기
+## Datahub 실습하기.
+
+Apache Datahub는 [링크]()를 통해서 AWS 리소스에 설치 할 수 있으며 이번 레포지토리에서는 Datahub, ElasticSearch, Kafaka, Mysql을 모두 EKS 위에서 운영하는 방식으로 진행합니다.
+
+<img src="/1.pic/Pic2.png"></img>
+
+### 실습 순서
+1. **Pull-based with Recipe** : Recipe를 통해서 Amazon S3에 저장된 파일들과 Glue Data Catalog를 등록합니다.
+2. **Pull-based with Python** : Python 코드를 활용하여 Redshift와 DynamoDB의 메타데이터를 가져옵니다.
+3. **Pull-based with Datahub CLI** : Datahub CLI를 통해 Glossary를 Datahub에 등록하고 Business Information 들을 여러 소스에 등록하고 검색하는 작업을 진행합니다.
+4. **Push-based** : Spark(Glue, EMR), Airflow(MWAA), Dbt 작업을 Push 방식으로 Datahub에 등록합니다.
