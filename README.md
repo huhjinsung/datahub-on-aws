@@ -54,3 +54,6 @@ Apache Datahub는 [링크]()를 통해서 AWS 리소스에 설치 할 수 있으
 2. **Pull-based with Python** : Python 코드를 활용하여 Redshift와 DynamoDB의 메타데이터를 가져옵니다.
 3. **Pull-based with Datahub CLI** : Datahub CLI를 통해 Glossary를 Datahub에 등록하고 Business Information 들을 여러 소스에 등록하고 검색하는 작업을 진행합니다.
 4. **Push-based** : Spark(Glue, EMR), Airflow(MWAA), Dbt 작업을 Push 방식으로 Datahub에 등록합니다.
+
+## Reference
+[Datahub official Document](https://datahubproject.io/docs/features)
