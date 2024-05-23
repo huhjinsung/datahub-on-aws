@@ -45,7 +45,7 @@ Datahub는 데이터를 메타데이터를 저장하고 관리하기 위한 **1.
 
 ## Datahub 실습하기.
 
-Apache Datahub는 [링크](https://datahubproject.io/docs/deploy/aws)를 통해서 AWS 리소스에 설치 할 수 있으며 이번 레포지토리에서는 Datahub, ElasticSearch, Kafaka, Mysql을 모두 EKS 위에서 운영하는 방식으로 진행합니다.
+Apache Datahub는 [링크](https://datahubproject.io/docs/deploy/aws)를 통해서 AWS 리소스에 설치 할 수 있으며 이번 레포지토리에서는 Datahub, ElasticSearch, Kafka, Mysql을 모두 EKS 위에서 운영하는 방식으로 진행합니다.
 
 <img src="/1.pic/Pic2.png"></img>
 
