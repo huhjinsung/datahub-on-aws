@@ -58,7 +58,6 @@ import os
 GMS_ENDPOINT=os.environ['GMS_ENDPOINT']
 GMS_TOKEN=os.environ['GMS_TOKEN']
 
-# The pipeline configuration is similar to the recipe YAML files provided to the CLI tool.
 pipeline = Pipeline.create(
     {
         "source": {
@@ -82,10 +81,48 @@ pipeline = Pipeline.create(
     }
 )
 
-# Run the pipeline and report the results.
 pipeline.run()
 pipeline.pretty_print_summary()</code></pre>
 
 파이썬을 통해 Redshift의 Injestion 등록이 완료되면, Datahub의 데이터셋 메뉴에 아래와 같이 Redshift에 저장된 Database, Schema, Table 등을 확인 할 수 있습니다.
 
 <img src="/1.pic/Pic11.png"></img>
+
+## Amazon DynamoDB
+
+아래의 파이썬 코드를 활용하여 DynamoDB에 저장되어있는 테이블을 Datahub로 Python 스크립트를 통해서 실행합니다.
+
+<pre><code>from datahub.ingestion.run.pipeline import Pipeline
+import os
+
+AWS_ACCESS_KEY=os.environ['AWS_ACCESS_KEY']
+AWS_SECRET_KEY=os.environ['AWS_SECRET_KEY']
+GMS_ENDPOINT=os.environ['GMS_ENDPOINT']
+GMS_TOKEN=os.environ['GMS_TOKEN']
+
+pipeline = Pipeline.create(
+    {
+        "source": {
+            "type": "dynamodb",
+            "config": {
+                "aws_access_key_id": AWS_ACCESS_KEY,
+                "aws_secret_access_key": AWS_SECRET_KEY,
+                "aws_region": "ap-northeast-1"
+            },
+        },
+        "sink": {
+            "type": "datahub-rest",
+            "config": {
+                "server": GMS_ENDPOINT,
+                "token": GMS_TOKEN
+                },
+        },
+    }
+)
+
+pipeline.run()
+pipeline.pretty_print_summary()</code></pre>
+
+DynamoDB 테이블이 Datahub에 등록이 완료되면 아래와 같이 Datahub 안에서 DynamoDB에 저장된 테이블들을 확인 할 수 있습니다.
+
+<img src="/1.pic/Pic12.png"></img>
