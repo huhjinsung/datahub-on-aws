@@ -15,7 +15,7 @@ Datahub의 UI에 접속하여 환경설정 탭으로 이동해 Token을 생성�
 python3 -m venv datahub
 
 # Activate the virtualenv
-Source datahub/bin/activate
+source datahub/bin/activate
 
 # Install/upgrade datahub client
 pip3 install install acryl-datahub
@@ -51,4 +51,41 @@ Python 코드를 통해서 AWS에 프로비저닝 된 Redshift의 메타데이�
 먼저 Data의 원본인 Redshift에 어떤 테이블이 저장되어 있는지 확인합니다. 총 8개의 테이블이 public 스키마 안에 저장되어 있습니다.
 <img src="/1.pic/Pic10.png"></img>
 
-아래의 코드를 활용해서 8개의 테이블 중 아래의 코드를 통해 'orders'와 'supplier' 테이블만 수집합니다.
+아래의 코드를 통해 Redshift 안에 저장된 테이블들을 Datahub에 파이썬 코드로 등록합니다.
+<pre><code>from datahub.ingestion.run.pipeline import Pipeline
+import os
+
+GMS_ENDPOINT=os.environ['GMS_ENDPOINT']
+GMS_TOKEN=os.environ['GMS_TOKEN']
+
+# The pipeline configuration is similar to the recipe YAML files provided to the CLI tool.
+pipeline = Pipeline.create(
+    {
+        "source": {
+            "type": "redshift",
+            "config": {
+                "host_port": <YOUR REDSHIFT HOST>,
+                "database": <YOUR REDSHIFT DB>,
+                "username": <YOUR REDSHIFT USENAME>,
+                "password" : <YOUR REDSHIFT PASSWORD>,
+                "include_table_lineage": True,
+                "is_serverless": True,
+            },
+        },
+        "sink": {
+            "type": "datahub-rest",
+            "config": {
+                "server": GMS_ENDPOINT,
+                 "token": GMS_TOKEN
+                },
+        },
+    }
+)
+
+# Run the pipeline and report the results.
+pipeline.run()
+pipeline.pretty_print_summary()</code></pre>
+
+파이썬을 통해 Redshift의 Injestion 등록이 완료되면, Datahub의 데이터셋 메뉴에 아래와 같이 Redshift에 저장된 Database, Schema, Table 등을 확인 할 수 있습니다.
+
+<img src="/1.pic/Pic11.png"></img>
