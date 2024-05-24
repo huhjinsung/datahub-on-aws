@@ -51,7 +51,7 @@ Apache Datahub는 [링크](https://datahubproject.io/docs/deploy/aws)를 통해�
 
 ### 실습 순서
 1. [**Pull-based with Recipe**](/2.Pull-based-with-Recipe%20/README.md) : Recipe를 통해서 Amazon S3에 저장된 파일들과 Glue Data Catalog를 등록합니다.
-2. **Pull-based with Python** : Python 코드를 활용하여 Redshift와 DynamoDB의 메타데이터를 가져옵니다.
+2. [**Pull-based with Python**](/3.Pull-based-with-Python/README.md) : Python 코드를 활용하여 Redshift와 DynamoDB의 메타데이터를 가져옵니다.
 3. **Pull-based with Datahub CLI** : Datahub CLI를 통해 Glossary를 Datahub에 등록하고 Business Information 들을 여러 소스에 등록하고 검색하는 작업을 진행합니다.
 4. **Push-based** : Spark(Glue, EMR), Airflow(MWAA), Dbt 작업을 Push 방식으로 Datahub에 등록합니다.
 
